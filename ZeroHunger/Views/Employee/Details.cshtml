@@ -1,0 +1,47 @@
+﻿@model ZeroHunger.DB.Employee
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Employee</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            Available
+        </dt>
+
+        <dd>
+            @if (Model.isAvailable == 0)
+            {
+                <span>No</span>
+            }
+            else
+            {
+                <span>Yes</span>
+
+            }
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @if (Model.isAvailable == 1)
+    {
+        @Html.ActionLink(" Assign", "Assign", new { id = Model.Id })
+        <span> | </span>
+    }
+    @Html.ActionLink("Back to List", "All")
+</p>

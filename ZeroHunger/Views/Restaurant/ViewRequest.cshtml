@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ZeroHunger.DB.Request>
+
+@{
+    ViewBag.Title = "ViewRequest";
+}
+
+<h2>ViewRequest</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IssuedAt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PreserveUntil)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @if (item.EmployeeId == null)
+                {
+                    <span>Employee not assigned</span>
+                }
+                else
+                {
+                    @Html.DisplayFor(modelItem => item.EmployeeId)
+                }
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IssuedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PreserveUntil)
+            </td>
+            <td>
+                <!-- @Html.ActionLink("Delete", "Delete", new { id=item.Id }) -->
+                <a href="/Restaurant/RequestDelete/@item.Id" >Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<p>
+    @Html.ActionLink("Back to dashboard", "Dashboard")
+</p>

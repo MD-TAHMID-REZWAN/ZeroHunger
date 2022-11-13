@@ -1,0 +1,44 @@
+﻿@model ZeroHunger.DB.Employee
+
+@{
+    ViewBag.Title = "Collection_Details";
+}
+
+<h2>Collection_Details</h2>
+
+
+<div>
+    <h4>@Model.Name</h4>
+    <hr />
+    <form method="post">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="hidden">Request Id</th>
+                    <th>Restaurant name</th>
+                    <th>Location</th>
+                    <th>Issue date</th>
+                    <th>Preserve until date</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var request in Model.Requests)
+                {
+                    <tr>
+                        <td class="hidden"><input type="number" name="ReqId" value="@request.Id" /></td>
+                        <td>@request.Restaurant.Name</td>
+                        <td>@request.Restaurant.Location</td>
+                        <td>@request.IssuedAt</td>
+                        <td>@request.PreserveUntil</td>
+                        <td><input type="submit" value="Collection Done" /></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </form>
+
+</div>
+<p>
+    @Html.ActionLink("Back to dashboard", "Dashboard")
+</p>

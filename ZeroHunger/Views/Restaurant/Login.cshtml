@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login as Restaurant</h2>
+
+@if (TempData["loginMsg"] != null)
+{
+    <span style="color: red">@TempData["loginMsg"]</span>
+}
+
+<form method="post">
+    <input type="text" name="Name" class="form-control" placeholder="Enter restaurant name" /><br />
+    <input type="submit" value="Login" class="btn btn-primary" />
+</form>
+<br />
+<div>
+    @Html.ActionLink("Back to homepage", "Index", "Home")
+</div>

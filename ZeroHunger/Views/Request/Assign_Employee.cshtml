@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Assign_Employee";
+}
+
+<h2>Assign Employee</h2>
+
+<form method="post">
+
+    <label for="employees" class="btn btn-primary">Choose Employee</label>
+
+    <select name="EmId" id="employees">
+        <option value="" class="btn btn-primary">Please select employee</option>
+        @foreach (var items in Model)
+        {
+            if (items.isAvailable == 1)
+            {
+                <option value=@items.Id>@items.Name</option>
+            }
+
+        }
+
+    </select>
+    <br />
+    <input type="submit" value="Select employee" class="btn btn-primary" />
+</form>
+<br />
+<p>
+    @Html.ActionLink("Back to list", "All_Admin_Request")
+</p>

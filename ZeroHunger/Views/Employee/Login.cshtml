@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+<h2>Login as Employee</h2>
+
+@if (TempData["loginMsg"] != null)
+{
+    <span style="color: red">@TempData["loginMsg"]</span>
+}
+
+<form method="post">
+    <input type="text" name="Name" class="form-control" placeholder="Enter Employee name" /><br />
+    <input type="submit" value="Login"  />
+</form>
+<br />
+<div>
+    @Html.ActionLink("Back to homepage", "Index", "Home")
+</div>

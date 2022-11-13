@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "OpenRequest";
+}
+
+<h2>Request</h2>
+
+
+<h4>Company to collect spare foods</h4>
+<hr />
+
+@if (TempData["RequestAddSuccessMsg"] != null)
+{
+    <span style="color:forestgreen">@TempData["RequestAddSuccessMsg"]</span>
+}
+<br />
+<form method="post">
+    <label for="PreserveUntil">Preservation end date: &nbsp;</label>
+    <input type="date" name="PreserveUntil" /><br />
+    <input type="submit" value="Request" />
+</form>
+<br />
+
+<p>
+    @Html.ActionLink("Back to dashboard", "Dashboard")
+</p>

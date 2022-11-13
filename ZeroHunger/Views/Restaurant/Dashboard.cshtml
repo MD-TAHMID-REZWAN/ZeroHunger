@@ -1,0 +1,21 @@
+﻿@model ZeroHunger.DB.Restaurant
+
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<h2>Dashboard</h2>
+
+<div>
+    <section>
+        <h4>@Model.Name</h4>
+        <h6>@Model.Location</h6>
+    </section>
+    <hr />
+
+    <section>
+        <a href="/Request/All_Restaurant_Request" class="btn btn-primary">View all requests</a>
+        <a href="/Request/Open" class="btn btn-info">Make collection request</a>
+        <a href="/Restaurant/Logout" class="btn btn-danger">Logout</a>
+    </section><br />
+</div>

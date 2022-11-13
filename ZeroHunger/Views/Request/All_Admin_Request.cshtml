@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ZeroHunger.DB.Request>
+
+@{
+    ViewBag.Title = "All_Admin_Request";
+}
+
+<h2>All_Admin_Request</h2>
+
+<p>
+    Total requests: @Model.ToList().Count()
+    <br />
+    Pending requests: @ViewBag.PendingRequests
+</p>
+
+
+<table class="table">
+    <tr>
+        <th>Restaurant</th>
+        <th>Employee</th>
+        <th>Issued At</th>
+        <th>Preservation end date</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Restaurant.Name</td>
+
+            <td>
+
+                @if (item.EmployeeId == null)
+                {
+                    <span>Employee not assigned</span>
+                }
+                else
+                {
+                    @item.Employee.Name
+                }
+            </td>
+
+            <td>@item.IssuedAt</td>
+            <td>@item.PreserveUntil</td>
+            <td>
+                @Html.ActionLink("Details", "Admin_Request_Details", new { Id = @item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { Id = @item.Id })
+                @if (item.EmployeeId == null)
+                {
+                    <span> | </span>
+                    <a href="/Request/Assign_Employee/@item.Id">Assign employee</a>
+                }
+
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+@Html.ActionLink("Back to dashboard", "Index", "Admin")

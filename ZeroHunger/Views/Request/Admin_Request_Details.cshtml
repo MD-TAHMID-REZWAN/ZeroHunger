@@ -1,0 +1,55 @@
+﻿@model ZeroHunger.DB.Request
+@{
+    ViewBag.Title = "Admin_Request_Details";
+}
+
+<h2>Admin_Request_Details</h2>
+
+<div>
+    <h4>Request</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Restaurant Name
+        </dt>
+
+        <dd>
+            @Model.Restaurant.Name
+        </dd>
+
+        <dt>
+            Employee Id
+        </dt>
+
+
+
+        <dd>
+            @if (Model.EmployeeId != null)
+            {@Model.Employee.Name}
+        else
+        { <span>Not yet assigned</span>}
+        </dd>
+
+        <dt>
+            Issued At
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IssuedAt)
+        </dd>
+
+        <dt>
+            Preserve Until
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PreserveUntil)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @if (Model.EmployeeId == null)
+    {@Html.ActionLink("Assign employee", "Assign_Employee", new { Id = Model.Id })<span> | </span>}
+    @Html.ActionLink("Back to List", "All_Admin_Request")
+</p>

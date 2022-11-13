@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Open";
+}
+
+<h2>Request</h2>
+
+<hr />
+
+@if (TempData["RequestAddSuccessMsg"] != null)
+{
+    <span style="color:forestgreen">@TempData["RequestAddSuccessMsg"]</span>
+}
+<br />
+<form method="post">
+    <label for="PreserveUntil">Preservation end date: &nbsp;</label>
+    <input type="date" name="PreserveUntil" /><br />
+    <input type="submit" value="Request" class="btn btn-primary" />
+</form>
+<br />
+
+<p>
+    @Html.ActionLink("Back to dashboard", "Dashboard", "Restaurant")
+</p>
